@@ -1,21 +1,42 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+
+
+<h2>Cats</h2>
+<div class="search card1 form-group row">
+  <label for="hero-name" style="margin-right: 10px;
+  font-size: 25px;">Cat Breed: </label>
+  <input class=" col-xs-2 " type="text" #heroName id="hero-name" (keyup)="search(heroName.value)">
+
+  <!-- (click) passes input value to add() and then clears the input -->
+
+  <button class="btn btn-primary" (click)="search(heroName.value)" style="margin-left: 10px;">
+    Search
+  </button>
+  <button class="element1 btn btn-danger" (click)="logout(); heroName.value=''">
+    Logout
+  </button>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div>
+  <input type="radio" name="colors" (click)="color='lightgreen'">Green
+  <input type="radio" name="colors" (click)="color='yellow'">Yellow
+  <input type="radio" name="colors" (click)="color='cyan'">Cyan
+</div>
+<table class="heroes">
+  <tr>
+    <th>Breed</th>
+    <th>Country</th>
+    <th>Origin</th>
+    <th>Coat</th>
+    <th>Pattern</th>
+  </tr>
+  <tr  [appHighlight]="color" *ngFor="let cat of catBreads">
+      <td class="country">{{ cat.breed }}</td>
+      <td class="country">{{ cat.country }}</td>  
+      <td class="country">{{ cat.origin }}</td>  
+      <td class="country">{{ cat.coat }}</td>  
+      <td class="country">{{ cat.pattern }}</td>  
+  </tr>
+</table>
+
 
 <router-outlet></router-outlet>
